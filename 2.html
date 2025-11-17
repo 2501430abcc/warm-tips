@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>宝宝</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: #fffafc;
+        font-family: "微软雅黑", sans-serif;
+        position: relative;
+    }
+    .tip {
+        position: absolute;
+        padding: 10px 20px;
+        border-radius: 12px;
+        font-size: 18px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        animation: fadeout 3s linear forwards;
+    }
+    @keyframes fadeout {
+        0% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<script>
+const tips = [
+    '我想你了',
+    '今天过得开心嘛',
+    '期待和你见面',
+    '顺顺利利',
+    '早点休息',
+    '天冷了，多穿衣服',
+    '今天有想我嘛'
+];
+
+const colors = [
+    'pink', 'skyblue', 'lightgreen', 'lavender', 'lightyellow',
+    'plum', 'coral', 'bisque', 'lavenderblush', 'oldlace'
+];
+
+// 每 50ms 生成一个提示框（可调节）
+setInterval(() => {
+    const tipDiv = document.createElement("div");
+    tipDiv.className = "tip";
+
+    // 随机内容
+    tipDiv.innerText = tips[Math.floor(Math.random() * tips.length)];
+
+    // 随机背景
+    tipDiv.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+    // 随机位置
+    const x = Math.random() * (window.innerWidth - 150);
+    const y = Math.random() * (window.innerHeight - 50);
+    tipDiv.style.left = x + "px";
+    tipDiv.style.top = y + "px";
+
+    document.body.appendChild(tipDiv);
+
+    // 3 秒后删除
+    setTimeout(() => {
+        tipDiv.remove();
+    }, 3000);
+
+}, 50);
+</script>
+
+</body>
+</html>
